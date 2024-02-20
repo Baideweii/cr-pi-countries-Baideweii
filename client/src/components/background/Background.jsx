@@ -18,7 +18,7 @@ export default function Background() {
         };
 
         const interval = setInterval(() => {
-            setCount(prevCount => (prevCount % 12) + 1); // Ciclar de 1 a 12
+            setCount(prevCount => (prevCount % 12) + 1); 
         }, 30000);
 
         loadImages().then(images => {
