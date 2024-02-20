@@ -1,11 +1,12 @@
 import React from 'react';
 import Card from '../card/Card';
+import "./Cards.css"
 
 function Cards(props) { 
     const { countries } = props;
 
     return (
-        <div>
+        <div className='cards-container'>
             {countries.map((country) => (
                 <Card 
                     key={country.id}

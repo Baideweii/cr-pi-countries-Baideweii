@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import Cards from '../cards/cards';
+import Cards from '../cards/Cards';
 import Pagination from '../pagination/Pagination';
 import SearchBar from '../searchbar/SearchBar';
 import { Link } from 'react-router-dom';

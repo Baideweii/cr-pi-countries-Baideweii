@@ -1,0 +1,9 @@
+.cards-container {
+    margin-top: 5%;
+    display: flex;
+    flex-wrap: wrap; /* Asegura que las cards se envuelvan si no caben en una sola línea */
+    justify-content: center; /* Centra las cards horizontalmente */
+    align-items: center; /* Centra las cards verticalmente */
+    gap: 20px; /* Espacio entre las cards */
+  }
+  
