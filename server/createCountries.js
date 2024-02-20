@@ -5,17 +5,16 @@ const URL = "http://localhost:5000/countries";
 
 async function createCountries() {
     try {
-      const DEFAULT_CAPITAL = "No tiene capital";
       const response = await axios.get(URL);
-  
+      
       if (response.data.error) {
         console.log("Error: No se pudo obtener datos de los países.");
         return;
       }
-  
+      
       const countriesData = response.data;
       let createdCountries = 0;
-  
+      
       for (let countryData of countriesData) {
         const {
           cca3: id,
@@ -25,12 +24,16 @@ async function createCountries() {
           subregion,
           area,
           population: poblation,
+          maps: { googleMaps }
         } = countryData;
-  
+        
         try {
+          const defaultCapital = "No tiene capital";
           const countryContinent = countryData.continents[0];
           const countryName = common || countryData.name.official;
-          const countryCapital = Array.isArray(capital) ? capital[0] : capital || DEFAULT_CAPITAL;
+          const countryMap = googleMaps || countryData.maps.openStreetMaps;
+          const countryCapital = Array.isArray(capital) ? capital[0] : capital || defaultCapital;
+
   
           await Country.create({
             id,
@@ -41,6 +44,7 @@ async function createCountries() {
             subregion,
             area,
             poblation,
+            maps: countryMap,
           });
           createdCountries++;
         } catch (error) {

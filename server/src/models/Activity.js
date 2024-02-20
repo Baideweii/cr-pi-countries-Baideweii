@@ -6,6 +6,7 @@ module.exports = (sequelize) => {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
+            autoIncrement: true,
         },
         name: {
             type: DataTypes.STRING,
@@ -13,15 +14,21 @@ module.exports = (sequelize) => {
         },
         difficult: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: false
         },
         duration: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
         season: {
-            type: DataTypes.ENUM('Verano', 'Otoño', 'Invierno', 'Primavera'),
+            type: DataTypes.ENUM('Invierno', 'Otoño', 'Primavera', 'Verano'),
             allowNull: false,
         },
+        type: {
+            type: DataTypes.ENUM('Recreativo', 'Religioso', 'Deportivo', 'Medicinal', 'Sexual', 'Cultural', 'Gastronomico', 'Ecologico', 'Artistico', 'Ocio'),
+            allowNull: false,
+        },
+    }, {
+        timestamps: false
     });
 };

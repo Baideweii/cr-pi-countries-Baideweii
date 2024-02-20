@@ -1,35 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// En App.jsx
+
+import React, { useState } from 'react';
+import './App.css';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import LandingPage from './components/landing/LandingPage.jsx';
+import HomePage from './components/home/HomePage.jsx';
+import LoadingPage from './components/loading/LoadingPage.jsx';
+import { useEffect } from 'react';
+import Clock from './components/clock/Clock.jsx';
+import Detail from './components/detail/Detail.jsx';
+import ActivityForm from './components/form/ActivityForm.jsx';
+import Background from './components/background/Background.jsx';
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [access, setAccess] = useState(false);
+    const [background, setBackground] = useState(null);
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    const navigate = useNavigate();
+
+    const handleAccess = () => {
+        setAccess(true);
+    };
+
+    useEffect(() => {
+        !access && navigate('/');
+    }, [access, navigate]);
+
+    return (
+        <div>
+            <Routes>
+                <Route
+                    path='/'
+                    element={<LandingPage handleAccess={handleAccess} background={background} />}
+                />
+                <Route path='/home' element={<HomePage background={background} />} />
+                <Route path='/loading' element={<LoadingPage setBackground={setBackground} />} />
+                <Route path='/detail/:id' element={<Detail />} />
+                <Route path='/activity' element={<ActivityForm />} />
+            </Routes>
+            <Clock />
+            {/* Background solo en las páginas LandingPage y LoadingPage */}
+            {(background !== null) && <Background />}
+        </div>
+    );
 }
 
-export default App
+export default App;
+

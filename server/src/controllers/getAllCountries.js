@@ -6,8 +6,7 @@ async function getAllCountries(req, res) {
 
     return res.status(200).json(countries);
   } catch (error) {
-    console.error("Error fetching countries:", error);
-    return res.status(500).send("Error fetching countries");
+    return res.status(500).json({message: error.message});
   }
 }
 

@@ -1,4 +1,4 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes, STRING } = require('sequelize');
 
 module.exports = (sequelize) => {
   sequelize.define('Country', {
@@ -36,6 +36,10 @@ module.exports = (sequelize) => {
       type: DataTypes.FLOAT,
       allowNull: false,
     },
+    maps: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   }, {
     timestamps: false,
   });
