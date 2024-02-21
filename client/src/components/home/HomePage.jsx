@@ -33,7 +33,7 @@ function HomePage({ countries }) {
   
   const onSearch = async (name) => {
     if (filterValue === "All") {
-      const URL_NAME = `${URLS}/countries/name/?name=`;
+      const URL_NAME = `${URLS.theUrl}/countries/name/?name=`;
       try {
         if (name.trim() === "") {
           setAllCountries(countries); 
@@ -71,7 +71,7 @@ function HomePage({ countries }) {
   };
 
   const getActivityType = async (type) => {
-    const URL_NAME = `${URLS}/activities`;
+    const URL_NAME = `${URLS.theUrl}/activities`;
     if (type === 'None') {
       setAllCountries(countries)
     } else {

@@ -11,8 +11,8 @@ function LoadingPage({ updateCountries, setBackground }) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const URL_COUNTRIES = `${URLS}/countries`;
-        const URL_ACTIVITIES = `${URLS}/activities`;
+        const URL_COUNTRIES = `${URLS.theUrl}/countries`;
+        const URL_ACTIVITIES = `${URLS.theUrl}/activities`;
 
     const activities = [
         {
