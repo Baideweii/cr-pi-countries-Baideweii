@@ -193,9 +193,7 @@ function LoadingPage({ updateCountries, setBackground }) {
             for (const activity of activities) {
                 await axios.post(URL_ACTIVITIES, activity);
             }
-            setTimeout(() => {
-                navigate('/home');
-            }, 2000); // Navegar a /home después de 3 segundos
+            navigate('/home');
         } catch (error) {
             console.error(error);
         }
