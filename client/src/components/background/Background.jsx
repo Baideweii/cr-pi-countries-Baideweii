@@ -34,16 +34,33 @@ const backgrounds = [
 
 export default function Background() {
     const [currentBackgroundIndex, setCurrentBackgroundIndex] = useState(0);
+    const [loadedImages, setLoadedImages] = useState([]);
 
     useEffect(() => {
+        const loadImages = async () => {
+            const images = [];
+            for (let i = 0; i < backgrounds.length; i++) {
+                const img = new Image();
+                img.src = backgrounds[i];
+                images.push(img);
+                await new Promise(resolve => img.onload = resolve);
+            }
+            return images;
+        };
+
+        loadImages().then(images => {
+            setLoadedImages(images);
+        });
+
+        // Cambiar el fondo cada 30 segundos
         const interval = setInterval(() => {
             setCurrentBackgroundIndex(prevIndex => (prevIndex + 1) % backgrounds.length);
-        }, 30000);
+        }, 5000);
 
         return () => clearInterval(interval);
     }, []);
 
     return (
-        <div className='app-background' style={{ backgroundImage: `url(${backgrounds[currentBackgroundIndex]})` }}></div>
+        <div className='app-background' style={{ backgroundImage: `url(${loadedImages.length > 0 ? loadedImages[currentBackgroundIndex].src : ''})` }}></div>
     );
 }
