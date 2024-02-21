@@ -17,11 +17,11 @@ function Clock() {
   return (
     <div>
       <div>
-        <img src={`../src/images/clockborder.png`} alt="Borde del reloj" className='clockborder'/>
+        <img src={`../../src/images/clockborder.png`} alt="Borde del reloj" className='clockborder'/>
       </div>
       <div>
         <img
-          src={`../src/images/clockinside.png`}
+          src={`../../src/images/clockinside.png`}
           className='clockinside' // Aplica la rotación al estilo
           alt="Interior del reloj"
           style={{ transform: `rotate(${rotate}deg)` }}

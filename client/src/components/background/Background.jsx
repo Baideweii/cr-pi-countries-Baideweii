@@ -10,7 +10,7 @@ export default function Background() {
             const images = [];
             for (let i = 1; i <= 12; i++) {
                 const img = new Image();
-                img.src = `../src/images/background${i}.png`;
+                img.src = `../../src/images/background${i}.png`;
                 images.push(img);
                 await new Promise(resolve => img.onload = resolve);
             }

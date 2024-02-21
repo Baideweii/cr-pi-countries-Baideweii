@@ -127,7 +127,7 @@ function LoadingPage({ updateCountries, setBackground }) {
         const loadedImages = [];
         for (let i = 1; i <= 12; i++) {
             const img = new Image();
-            img.src = `../src/images/background${i}.png`;
+            img.src = `../../src/images/background${i}.png`;
             loadedImages.push(img);
             await new Promise(resolve => img.onload = resolve);
         }
