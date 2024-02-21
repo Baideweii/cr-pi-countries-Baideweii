@@ -3,19 +3,23 @@ import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { updateCountries } from '../../redux/actions';
-import './LoadingPage.css'
-import LoadingGif from '../../images/loading.gif'
-// import Background0 from '../../images/background0.png'
-// import Background1 from '../../images/background1.png'
-// import Background2 from '../../images/background2.png'
-// import Background3 from '../../images/background3.png'
-// import Background4 from '../../images/background4.png'
-// import Background5 from '../../images/background5.png'
-// import Background6 from '../../images/background6.png'
-// import Background7 from '../../images/background7.png'
+import './LoadingPage.css';
+import LoadingGif from '../../images/loading.gif';
 
-// let images = [LoadingGif, Background0, Background1, Background2, Background3, Background4, Background5, Background6, Background7]
-
+// Importar las imágenes de fondo directamente
+import background0 from '../../images/background0.png';
+import background1 from '../../images/background1.png';
+import background2 from '../../images/background2.png';
+import background3 from '../../images/background3.png';
+import background4 from '../../images/background4.png';
+import background5 from '../../images/background5.png';
+import background6 from '../../images/background6.png';
+import background7 from '../../images/background7.png';
+import background8 from '../../images/background8.png';
+import background9 from '../../images/background9.png';
+import background10 from '../../images/background10.png';
+import background11 from '../../images/background11.png';
+import background12 from '../../images/background12.png';
 
 function LoadingPage({ updateCountries, setBackground }) {
     const navigate = useNavigate();
@@ -135,14 +139,40 @@ function LoadingPage({ updateCountries, setBackground }) {
     ]
     
     const loadImages = async () => {
-        const loadedImages = [];
-        for (let i = 1; i <= 12; i++) {
-            const img = new Image();
-            img.src = `../../images/background${i}.png`;
-            loadedImages.push(img);
-            await new Promise(resolve => img.onload = resolve);
+        const loadedImages = [
+            background0, 
+            background1, 
+            background2,
+            background3,
+            background4,
+            background5,
+            background6,
+            background7,
+            background8,
+            background9,
+            background10,
+            background11,
+            background12,
+
+        ];
+
+        // Puedes mantener esta parte si necesitas esperar a que las imágenes se carguen completamente
+        const imagePromises = loadedImages.map(img => {
+            return new Promise((resolve, reject) => {
+                const imageObj = new Image();
+                imageObj.src = img;
+                imageObj.onload = () => resolve(imageObj);
+                imageObj.onerror = reject;
+            });
+        });
+
+        try {
+            await Promise.all(imagePromises);
+            return loadedImages;
+        } catch (error) {
+            console.error("Error al cargar imágenes:", error);
+            throw error;
         }
-        return loadedImages;
     };
 
     const getCountries = async () => {
@@ -151,7 +181,7 @@ function LoadingPage({ updateCountries, setBackground }) {
             updateCountries(data);
             const loadedImages = await loadImages();
             setImages(loadedImages);
-            setBackground(loadedImages[0].src); // Establecer el fondo después de cargar
+            setBackground(loadedImages[0]); // Establecer el fondo después de cargar
             postActivities(); // Después de obtener los países, publicar actividades
         } catch (error) {
             console.error(error);
@@ -172,13 +202,13 @@ function LoadingPage({ updateCountries, setBackground }) {
     };
 
     getCountries();
-    }, [updateCountries, setBackground, navigate]);
+}, [updateCountries, setBackground, navigate]);
 
-    return (
-        <div className='loading_container'>
-          <img src={LoadingGif} alt='Loading' className='loading_gif' />
-        </div>
-      );
+return (
+    <div className='loading_container'>
+      <img src={LoadingGif} alt='Loading' className='loading_gif' />
+    </div>
+  );
 }
 
 const mapDispatchToProps = {
