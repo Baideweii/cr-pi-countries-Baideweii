@@ -1,7 +1,10 @@
 const axios = require("axios");
 const { Country } = require("./src/db"); 
 
+//API local
 // const URL = "http://localhost:5000/countries";
+
+//API de pagina web
 const URL = "https://restcountries.com/v3.1/all";
 
 async function createCountries() {

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import URLS from '../../helpers/urlHelper';
 
 function Detail() {
     const { id } = useParams();
     const [country, setCountry] = useState({});
     const [activities, setActivities] = useState([]);
-    const URL = 'https://cr-pi-countries-baideweii.onrender.com/countries/';
-    // const URL = 'http://localhost:3001/countries/';
+    const URL = `${URLS}/countries/`;
 
     useEffect(() => {
         axios.get(`${URL}${id}`)

@@ -6,6 +6,7 @@ import SearchBar from '../searchbar/SearchBar';
 import { Link } from 'react-router-dom';
 import Filters from '../filters/Filters';
 import axios from "axios";
+import URLS from '../../helpers/urlHelper';
 
 function HomePage({ countries }) {
   const [allCountries, setAllCountries] = useState(countries);
@@ -29,10 +30,10 @@ function HomePage({ countries }) {
   const firstIndex = lastIndex - cardsPerPage;
   const nPages = Math.ceil(allCountries.length / cardsPerPage);
     
+  
   const onSearch = async (name) => {
     if (filterValue === "All") {
-      const URL_NAME = 'https://cr-pi-countries-baideweii.onrender.com/countries/name/?name=';
-      // const URL_NAME = 'http://localhost:3001/countries/name/?name=';
+      const URL_NAME = `${URLS}/countries/name/?name=`;
       try {
         if (name.trim() === "") {
           setAllCountries(countries); 
@@ -70,8 +71,7 @@ function HomePage({ countries }) {
   };
 
   const getActivityType = async (type) => {
-    const URL_NAME = 'https://cr-pi-countries-baideweii.onrender.com/activities/';
-    // const URL_NAME = 'http://localhost:3001/activities/';
+    const URL_NAME = `${URLS}/activities`;
     if (type === 'None') {
       setAllCountries(countries)
     } else {

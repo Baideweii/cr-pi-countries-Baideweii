@@ -5,15 +5,14 @@ import axios from 'axios';
 import { updateCountries } from '../../redux/actions';
 import './LoadingPage.css';
 import LoadingGif from '../../images/loading.gif';
+import URLS from '../../helpers/urlHelper';
 
 function LoadingPage({ updateCountries, setBackground }) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const URL_COUNTRIES = 'https://cr-pi-countries-baideweii.onrender.com/countries';
-        const URL_ACTIVITIES = 'https://cr-pi-countries-baideweii.onrender.com/activities';
-        // const URL_COUNTRIES = 'http://localhost:3001/countries';
-        // const URL_ACTIVITIES = 'http://localhost:3001/activities';
+        const URL_COUNTRIES = `${URLS}/countries`;
+        const URL_ACTIVITIES = `${URLS}/activities`;
 
     const activities = [
         {

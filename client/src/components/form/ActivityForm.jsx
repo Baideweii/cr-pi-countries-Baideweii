@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { validateName, validateDifficulty, validateDuration, validateSeason, validateType } from '../../validations/validation';
+import URLS from '../../helpers/urlHelper';
 
 const ActivityForm = ({ allCountries }) => {
   const [formData, setFormData] = useState({
@@ -97,8 +98,7 @@ const ActivityForm = ({ allCountries }) => {
 
     try {
       const { name, difficult, duration, season, type, countries } = formData;
-      await axios.post('https://cr-pi-countries-baideweii.onrender.com/activities', { name, difficult, duration, season, type, countries });
-      // await axios.post('http://localhost:3001/activities', { name, difficult, duration, season, type, countries });
+      await axios.post(`${URLS}/activities`, { name, difficult, duration, season, type, countries });
       alert('Actividad turística creada exitosamente');
       setFormData({
         name: '',
