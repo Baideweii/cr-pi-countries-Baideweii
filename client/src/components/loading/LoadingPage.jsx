@@ -5,6 +5,17 @@ import axios from 'axios';
 import { updateCountries } from '../../redux/actions';
 import './LoadingPage.css'
 import LoadingGif from '../../images/loading.gif'
+// import Background0 from '../../images/background0.png'
+// import Background1 from '../../images/background1.png'
+// import Background2 from '../../images/background2.png'
+// import Background3 from '../../images/background3.png'
+// import Background4 from '../../images/background4.png'
+// import Background5 from '../../images/background5.png'
+// import Background6 from '../../images/background6.png'
+// import Background7 from '../../images/background7.png'
+
+// let images = [LoadingGif, Background0, Background1, Background2, Background3, Background4, Background5, Background6, Background7]
+
 
 function LoadingPage({ updateCountries, setBackground }) {
     const navigate = useNavigate();
@@ -127,7 +138,7 @@ function LoadingPage({ updateCountries, setBackground }) {
         const loadedImages = [];
         for (let i = 1; i <= 12; i++) {
             const img = new Image();
-            img.src = `../../src/images/background${i}.png`;
+            img.src = `../../images/background${i}.png`;
             loadedImages.push(img);
             await new Promise(resolve => img.onload = resolve);
         }
