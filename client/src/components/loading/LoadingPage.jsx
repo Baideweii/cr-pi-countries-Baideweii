@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { updateCountries } from '../../redux/actions';
 import './LoadingPage.css'
+import LoadingGif from '../../images/loading.gif'
 
 function LoadingPage({ updateCountries, setBackground }) {
     const navigate = useNavigate();
@@ -164,7 +165,7 @@ function LoadingPage({ updateCountries, setBackground }) {
 
     return (
         <div className='loading_container'>
-          <img src='../src/images/loading.gif' alt='Loading' className='loading_gif' />
+          <img src={LoadingGif} alt='Loading' className='loading_gif' />
         </div>
       );
 }
