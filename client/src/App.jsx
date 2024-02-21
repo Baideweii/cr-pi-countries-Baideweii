@@ -1,5 +1,3 @@
-// En App.jsx
-
 import React, { useState } from 'react';
 import './App.css';
 import { Routes, Route, useNavigate } from 'react-router-dom';
