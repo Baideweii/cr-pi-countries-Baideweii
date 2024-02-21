@@ -6,7 +6,8 @@ function Detail() {
     const { id } = useParams();
     const [country, setCountry] = useState({});
     const [activities, setActivities] = useState([]);
-    const URL = 'http://localhost:3001/countries/';
+    const URL = 'https://cr-pi-countries-baideweii.onrender.com/countries/';
+    // const URL = 'http://localhost:3001/countries/';
 
     useEffect(() => {
         axios.get(`${URL}${id}`)

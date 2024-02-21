@@ -10,8 +10,10 @@ function LoadingPage({ updateCountries, setBackground }) {
     const [images, setImages] = useState(null);
 
     useEffect(() => {
-        const URL_COUNTRIES = 'http://localhost:3001/countries';
-        const URL_ACTIVITIES = 'http://localhost:3001/activities';
+        const URL_COUNTRIES = 'https://cr-pi-countries-baideweii.onrender.com/countries';
+        const URL_ACTIVITIES = 'https://cr-pi-countries-baideweii.onrender.com/activities';
+        // const URL_COUNTRIES = 'http://localhost:3001/countries';
+        // const URL_ACTIVITIES = 'http://localhost:3001/activities';
 
     const activities = [
         {

@@ -97,7 +97,8 @@ const ActivityForm = ({ allCountries }) => {
 
     try {
       const { name, difficult, duration, season, type, countries } = formData;
-      await axios.post('http://localhost:3001/activities', { name, difficult, duration, season, type, countries });
+      await axios.post('https://cr-pi-countries-baideweii.onrender.com/activities', { name, difficult, duration, season, type, countries });
+      // await axios.post('http://localhost:3001/activities', { name, difficult, duration, season, type, countries });
       alert('Actividad turística creada exitosamente');
       setFormData({
         name: '',
