@@ -23,7 +23,7 @@ function App() {
     };
 
     useEffect(() => {
-        !access && navigate('/');
+        !access && navigate('/home');
     }, [access, navigate]);
 
     return (
