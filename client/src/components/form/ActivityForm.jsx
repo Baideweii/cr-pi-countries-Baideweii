@@ -98,7 +98,7 @@ const ActivityForm = ({ allCountries }) => {
 
     try {
       const { name, difficult, duration, season, type, countries } = formData;
-      await axios.post(`${URLS}/activities`, { name, difficult, duration, season, type, countries });
+      await axios.post(`${URLS.theUrl}/activities`, { name, difficult, duration, season, type, countries });
       alert('Actividad turística creada exitosamente');
       setFormData({
         name: '',
