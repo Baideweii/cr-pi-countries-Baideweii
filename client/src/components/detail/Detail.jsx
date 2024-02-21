@@ -7,10 +7,11 @@ function Detail() {
     const { id } = useParams();
     const [country, setCountry] = useState({});
     const [activities, setActivities] = useState([]);
-    const URL = `${URLS}/countries/`;
+
+    const URL = `${URLS.theUrl}/countries`;
 
     useEffect(() => {
-        axios.get(`${URL}${id}`)
+        axios.get(`${URL}/${id}`)
             .then(({ data }) => {
                 if (data) {
                     setCountry(data);

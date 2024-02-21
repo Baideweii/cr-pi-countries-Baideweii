@@ -5,6 +5,9 @@ import { validateName, validateDifficulty, validateDuration, validateSeason, val
 import URLS from '../../helpers/urlHelper';
 
 const ActivityForm = ({ allCountries }) => {
+
+  const URL_ACTIVITIES = `${URLS.theUrl}/activities`;
+
   const [formData, setFormData] = useState({
     name: '',
     difficult: '',
@@ -98,7 +101,7 @@ const ActivityForm = ({ allCountries }) => {
 
     try {
       const { name, difficult, duration, season, type, countries } = formData;
-      await axios.post(`${URLS.theUrl}/activities`, { name, difficult, duration, season, type, countries });
+      await axios.post(URL_ACTIVITIES, { name, difficult, duration, season, type, countries });
       alert('Actividad turística creada exitosamente');
       setFormData({
         name: '',
