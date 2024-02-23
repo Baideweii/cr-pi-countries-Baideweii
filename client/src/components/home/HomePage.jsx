@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import Cards from '../cards/Cards';
 import Pagination from '../pagination/Pagination';
 import SearchBar from '../searchbar/SearchBar';
@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import Filters from '../filters/Filters';
 import axios from "axios";
 import URLS from '../../helpers/urlHelper';
+import { filterByTypes } from '../../redux/actions';
 
 function HomePage({ countries }) {
   const [allCountries, setAllCountries] = useState(countries);
@@ -17,6 +18,8 @@ function HomePage({ countries }) {
   const [searchBarInput, setSearchBarInput] = useState('');
   
   const [filterValue, setFilterValue] = useState("All");
+
+  const dispatch = useDispatch()
 
   useEffect(() => {
     setCurrentPage(1); 
@@ -73,12 +76,13 @@ function HomePage({ countries }) {
   const getActivityType = async (type) => {
     const URL_NAME = `${URLS.theUrl}/activities`;
     if (type === 'None') {
-      setAllCountries(countries)
+      dispatch(filterByTypes(type, countries));
+      setCurrentPage(1);
     } else {
       try {
-        const { data } = await axios.get(`${URL_NAME}${type}`);
+        const { data } = await axios.get(`${URL_NAME}/${type}`);
         if (data.length > 0) {
-          setAllCountries(data);
+          dispatch(filterByTypes(type, data))
           setCurrentPage(1);
         } else {
           alert('No hay países con ese tipo');

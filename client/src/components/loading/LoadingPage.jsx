@@ -126,7 +126,7 @@ function LoadingPage({ updateCountries, setBackground }) {
             const { data } = await axios.get(URL_COUNTRIES);
             updateCountries(data);
             setBackground(); // Establecer el fondo
-            navigate('/home')
+            postActivities();
         } catch (error) {
             console.error(error);
         }

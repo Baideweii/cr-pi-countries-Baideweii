@@ -2,15 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { filterCountries, orderCountries } from '../../redux/actions';
 
-function Filters({ dispatch, handleFilterChange, getActivityType, filterValue, orderValue }) {
+function Filters({ dispatch, handleFilterChange, getActivityType, filterValue, orderValue, typeValue }) {
   const [continentSelector, setContinentSelector] = useState(filterValue);
   const [orderSelector, setOrderSelector] = useState(orderValue);
-  const [typeSelector, setTypeSelector] = useState('None')
-
-  useEffect(() => {
-    setContinentSelector(filterValue);
-    setOrderSelector(orderValue);
-  }, [filterValue, orderValue]);
+  const [typeSelector, setTypeSelector] = useState(typeValue);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,11 +13,9 @@ function Filters({ dispatch, handleFilterChange, getActivityType, filterValue, o
 
     if (name === 'continentSelector') {
       setContinentSelector(value);
-      setTypeSelector('None')
       dispatch(filterCountries(value));
     } 
     if (name === 'orderSelector') {
-      setTypeSelector('None') 
       setOrderSelector(value);
       dispatch(orderCountries(value));
     }
@@ -84,6 +77,7 @@ function Filters({ dispatch, handleFilterChange, getActivityType, filterValue, o
 const mapStateToProps = (state) => ({
   filterValue: state.filter,
   orderValue: state.order,
+  typeValue: state.type,
 });
 
 export default connect(mapStateToProps)(Filters);

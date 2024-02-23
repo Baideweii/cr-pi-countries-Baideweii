@@ -2,10 +2,10 @@ const axios = require("axios");
 const { Country } = require("./src/db"); 
 
 //API local
-const URL = "http://localhost:5000/countries";
+// const URL = "http://localhost:5000/countries";
 
 //API de pagina web
-// const URL = "https://restcountries.com/v3.1/all";
+const URL = "https://restcountries.com/v3.1/all";
 
 async function createCountries() {
     try {
@@ -20,35 +20,23 @@ async function createCountries() {
       let createdCountries = 0;
       
       for (let countryData of countriesData) {
-        const {
-          cca3: id,
-          name: { common },
-          flags: { png: image },
-          capital,
-          subregion,
-          area,
-          population: poblation,
-          maps: { googleMaps }
-        } = countryData;
-        
         try {
           const defaultCapital = "No tiene capital";
-          const countryContinent = countryData.continents[0];
-          const countryName = common || countryData.name.official;
-          const countryMap = googleMaps || countryData.maps.openStreetMaps;
-          const countryCapital = Array.isArray(capital) ? capital[0] : capital || defaultCapital;
-
   
           await Country.create({
-            id,
-            name: countryName,
-            image,
-            continent: countryContinent,
-            capital: countryCapital,
-            subregion,
-            area,
-            poblation,
-            maps: countryMap,
+            id: countryData.cca3,
+            name: countryData.name.common,
+            officialName: countryData.name.official,
+            image: countryData.flags.png,
+            coat: countryData.coatOfArms.png,
+            capital: Array.isArray(countryData.capital) ? countryData.capital[0] : countryData.capital || defaultCapital,
+            languages: countryData.languages ? Object.values(countryData.languages).join(', ') : null, // Convertir las claves del objeto languages en una cadena de texto separada por comas
+            area: countryData.area,
+            poblation: countryData.population,
+            currencies: countryData.currencies ? Object.values(countryData.currencies)[0].name : null, // Extraer el nombre de la primera moneda si existe
+            continent: countryData.continents[0],
+            subregion: countryData.subregion,
+            maps: countryData.maps.googleMaps,
           });
           createdCountries++;
         } catch (error) {
