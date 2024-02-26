@@ -6,6 +6,7 @@ import './Detail.css'
 import detailTittleImage from '../../images/detail-tittle.png'
 import activityTittleImage from '../../images/detail-activity-tittle.png'
 import activityImage from '../../images/detail-activity.png'
+import detailBackground from '../../images/detail.png'
 
 function Detail() {
     const { id } = useParams();
@@ -43,7 +44,7 @@ function Detail() {
 
     return (
         <div>
-            <div className='detail-container'>
+            <div className='detail-container' style={{ backgroundImage: `url(${detailBackground})` }}>
                 <img className='detail-flag' src={country.image} alt={country.name} />
     
                 {country.id && <p className="country-id">Abreviatura: <br></br>{country.id}</p>}
