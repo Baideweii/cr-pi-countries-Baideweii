@@ -1,23 +1,22 @@
-/* LandingPage.css */
 .earth-container {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 40%; /* Tamaño ligeramente más grande que la imagen */
-    height: 55%; /* Tamaño ligeramente más grande que la imagen */
-    overflow: hidden; /* Oculta el contenido que se desborda del contenedor */
-    border-radius: 50%; /* Hace que el contenedor sea un círculo */
+    width: 40%; 
+    height: 55%; 
+    overflow: hidden; 
+    border-radius: 50%; 
     cursor: pointer;
-    transition: transform 0.3s ease; /* Agregamos una transición suave para la escala */
+    transition: transform 0.3s ease;
 }
 
 .earth-container:hover {
-    transform: translate(-50%, -50%) scale(1.2); /* Agranda el contenedor en un 150% cuando se hace hover */
+    transform: translate(-50%, -50%) scale(1.2); 
 }
 
 .earth {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ajusta la imagen para que se ajuste al contenedor manteniendo la relación de aspecto */
+    object-fit: cover; 
 }

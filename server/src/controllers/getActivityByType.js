@@ -4,7 +4,6 @@ async function getActivityByType(req, res) {
   const { type } = req.params;
 
   try {
-    // Encontrar todas las actividades con el tipo indicado
     const activities = await Activity.findAll({
       where: {
         type: type
@@ -15,10 +14,8 @@ async function getActivityByType(req, res) {
       return res.status(304).json({ message: "No se ha encontrado ninguna actividad con ese tipo." });
     }
 
-    // Obtener los IDs de las actividades encontradas
     const activityIds = activities.map(activity => activity.id);
 
-    // Encontrar todas las countries que tengan al menos una de las actividades encontradas
     const countries = await Country.findAll({
       include: [
         {

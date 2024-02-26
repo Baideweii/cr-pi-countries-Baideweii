@@ -2,12 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import Cards from '../cards/Cards';
 import Pagination from '../pagination/Pagination';
-import SearchBar from '../searchbar/SearchBar';
-import { Link } from 'react-router-dom';
-import Filters from '../filters/Filters';
 import axios from "axios";
 import URLS from '../../helpers/urlHelper';
 import { filterByTypes } from '../../redux/actions';
+import Nav from '../nav/Nav';
 
 function HomePage({ countries }) {
   const [allCountries, setAllCountries] = useState(countries);
@@ -90,7 +88,8 @@ function HomePage({ countries }) {
         } 
       } catch (error) {
         alert('No hay países con ese tipo');
-        setAllCountries(countries);
+        dispatch(filterByTypes('None', countries));
+        setCurrentPage(1);
       } 
     }
   }
@@ -102,11 +101,13 @@ function HomePage({ countries }) {
 
   return (
     <div>
-      <SearchBar onSearch={onSearch} searchBarInput={searchBarInput} setSearchBarInput={setSearchBarInput} />
-      <Filters handleFilterChange={handleFilterChange} getActivityType={getActivityType} />
-      <Link to="/activity">
-        <button>Create Activity</button>
-      </Link>
+      <Nav
+        onSearch={onSearch}
+        searchBarInput={searchBarInput}
+        setSearchBarInput={setSearchBarInput}
+        handleFilterChange={handleFilterChange}
+        getActivityType={getActivityType}
+        />
       <Cards countries={allCountries.slice(firstIndex, lastIndex)} />
       <Pagination
         nPages={nPages}

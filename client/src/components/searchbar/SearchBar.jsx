@@ -1,12 +1,15 @@
 import React from 'react';
 import './SearchBar.css';
+import { validateSearch } from '../../validations/validation';
 
 function SearchBar(props) {
     const { searchBarInput, setSearchBarInput, onSearch } = props;
 
     const handleChange = (event) => {
         const inputValue = event.target.value;
-        if (/^[a-zA-Z]*$/.test(inputValue) || inputValue === "") {
+        const validationError = validateSearch(inputValue);
+
+        if (!validationError) { 
             setSearchBarInput(inputValue);
             onSearch(inputValue);
         }

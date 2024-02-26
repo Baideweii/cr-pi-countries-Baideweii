@@ -1,0 +1,19 @@
+.nav_ {
+    position: absolute;
+    top: 10%;
+    width: 80%;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    padding-left: 125px;
+    padding-right: 125px;
+}
+
+.nav_item {
+    flex: 1; 
+    text-align: center;
+}
+
+.nav_item:last-child {
+    text-align: right; 
+}

@@ -16,22 +16,6 @@ function LoadingPage({ updateCountries, setBackground }) {
 
     const activities = [
         {
-            "name":"Mona Lisa",
-            "difficult": 2,
-            "duration": 3,
-            "season":"Otoño",
-            "type":"Artistico",
-            "countries":["France"]
-          },
-        {
-            "name":"Diablos Danzantes de Yare",
-            "difficult": 3,
-            "duration": 12,
-            "season":"Primavera",
-            "type":"Cultural",
-            "countries":["Venezuela"]
-          },
-        {
             "name":"Partidos de la Champions",
             "difficult": 4,
             "duration": 2,
@@ -95,52 +79,28 @@ function LoadingPage({ updateCountries, setBackground }) {
                 "Wales"
             ]
           },
-          {
-            "name":"Acupuntura China",
-            "difficult": 2,
-            "duration": 3,
-            "season":"Otoño",
-            "type":"Medicinal",
-            "countries":["China"]
-          },
-          {
-            "name":"Vaticano",
-            "difficult": 1,
-            "duration": 2,
-            "season":"Verano",
-            "type":"Religioso",
-            "countries":["Vatican City"]
-          },
-          {
-            "name":"Barrio rojo de Amsterdam",
-            "difficult": 1,
-            "duration": 1,
-            "season":"Primavera",
-            "type":"Sexual",
-            "countries":["Netherlands"]
-          },
     ]
+
+    // const postActivities = async () => {
+    //     try {
+    //         for (const activity of activities) {
+    //             await axios.post(URL_ACTIVITIES, activity);
+    //         }
+    //         setTimeout(() => {
+    //             navigate('/home');
+    //         }, 2000); 
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // };
     
     const getCountries = async () => {
         try {
             const { data } = await axios.get(URL_COUNTRIES);
             updateCountries(data);
-            setBackground(); // Establecer el fondo
-            postActivities();
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
-    //Si esta deployado esto no hace falta
-    const postActivities = async () => {
-        try {
-            for (const activity of activities) {
-                await axios.post(URL_ACTIVITIES, activity);
-            }
-            setTimeout(() => {
-                navigate('/home');
-            }, 2000); // Navegar a /home después de 3 segundos
+            setBackground(); 
+            // postActivities();
+            navigate('/home');
         } catch (error) {
             console.error(error);
         }

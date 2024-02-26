@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { filterCountries, orderCountries } from '../../redux/actions';
+import './Filters.css';
 
 function Filters({ dispatch, handleFilterChange, getActivityType, filterValue, orderValue, typeValue }) {
   const [continentSelector, setContinentSelector] = useState(filterValue);
@@ -32,13 +33,14 @@ function Filters({ dispatch, handleFilterChange, getActivityType, filterValue, o
 
     dispatch(filterCountries('All'));
     dispatch(orderCountries('None'));
+    getActivityType('None')
   };
 
   return (
     <div>
       <button onClick={handleCleanse}>Limpiar selecciones</button>
       <select name="orderSelector" onChange={handleChange} value={orderSelector}>
-        <option value='None' hidden>Selecciona un orden en base a poblacion o alfabeticamente</option>
+        <option value='None' hidden>Orden</option>
         <option value='None' >Ninguno</option>
         <option value='ME'>Menor a mayor</option>
         <option value='MA'>Mayor a menor</option>
@@ -46,8 +48,8 @@ function Filters({ dispatch, handleFilterChange, getActivityType, filterValue, o
         <option value='A'>A-Z</option>
       </select>
       <select name="continentSelector" onChange={handleChange} value={continentSelector}>
-        <option value="All" hidden>Selecciona un continente</option>
-        <option value="All" >All</option>
+        <option value="All" hidden>Continente</option>
+        <option value="All" >Todos</option>
         <option value="Africa">Africa</option>
         <option value="Europe">Europe</option>
         <option value="Oceania">Oceania</option>
@@ -57,7 +59,7 @@ function Filters({ dispatch, handleFilterChange, getActivityType, filterValue, o
         <option value="South America">South America</option>
       </select>
       <select name="typeSelector" onChange={handleChange} value={typeSelector}>
-        <option value="None" hidden>Selecciona un tipo de actividad turistica</option>
+        <option value="None" hidden>Actividades</option>
         <option value="None">Ninguno</option>
         <option value="Artistico">Artístico</option>
         <option value="Cultural">Cultural</option>

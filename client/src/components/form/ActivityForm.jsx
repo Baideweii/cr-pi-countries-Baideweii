@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import { validateName, validateDifficulty, validateDuration, validateSeason, validateType } from '../../validations/validation';
 import URLS from '../../helpers/urlHelper';
+import './ActivityForm.css'
 
 const ActivityForm = ({ allCountries }) => {
 
@@ -125,7 +126,7 @@ const ActivityForm = ({ allCountries }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className='activity-form'>
       <label>
         Nombre:
         <input
@@ -178,7 +179,7 @@ const ActivityForm = ({ allCountries }) => {
       <label>
         Tipo:
         <select name="type" value={formData.type} onChange={handleChange} required>
-          <option hidden>Seleccione un tipo</option>
+          <option hidden>Selecciona un tipo</option>
           <option value="Artistico">Artístico</option>
           <option value="Cultural">Cultural</option>
           <option value="Deportivo">Deportivo</option>
@@ -197,7 +198,7 @@ const ActivityForm = ({ allCountries }) => {
         Países:
         <select value={selectedCountry} onChange={handleCountryChange}>
           <option value="" disabled>
-            Select a country
+            Selecciona un país
           </option>
           {allCountries.map((country) => (
             <option key={country.name} value={country.name}>
@@ -205,7 +206,7 @@ const ActivityForm = ({ allCountries }) => {
             </option>
           ))}
         </select>
-        <button type="button" onClick={handleAddCountry}>Add</button>
+        <button type="button" onClick={handleAddCountry}>Añadir</button>
         <div>
           <h4>Países seleccionados:</h4>
           {formData.countries.map((country, index) => (

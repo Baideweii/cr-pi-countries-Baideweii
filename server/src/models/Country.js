@@ -53,7 +53,7 @@ module.exports = (sequelize) => {
       allowNull: true,
     },
     maps: {
-      type: DataTypes.STRING,
+      type: DataTypes.JSON, 
       allowNull: false,
     },
   }, {

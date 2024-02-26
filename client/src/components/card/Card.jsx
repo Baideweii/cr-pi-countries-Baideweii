@@ -4,8 +4,8 @@ import './Card.css';
 
 function Card({ id, name, continent, image }) {
   return (
-    <figure>
-      <Link to={`/detail/${id}`}>
+    <Link to={`/detail/${id}`} className="card-link">
+      <figure className="card">
         <img src={image} alt={name} />
         <figcaption>
           <div className='figure-content'>
@@ -13,17 +13,9 @@ function Card({ id, name, continent, image }) {
             <div className='continent'>{continent}</div>
           </div>
         </figcaption>
-      </Link>
-    </figure>
+      </figure>
+    </Link>
   );
 }
 
 export default Card;
-
-{/* <div className='card'>
-            <Link to={`/detail/${id}`}>
-                <img src={image} alt={name}></img>
-            </Link>
-            <h4>{name}</h4>
-            <h4>{continent}</h4>
-        </div> */}

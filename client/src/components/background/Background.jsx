@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Background.css';
 
-// Importar las imágenes de fondo directamente
 import background0 from '../../images/background0.png';
 import background1 from '../../images/background1.png';
 import background2 from '../../images/background2.png';
@@ -52,10 +51,9 @@ export default function Background() {
             setLoadedImages(images);
         });
 
-        // Cambiar el fondo cada 30 segundos
         const interval = setInterval(() => {
             setCurrentBackgroundIndex(prevIndex => (prevIndex + 1) % backgrounds.length);
-        }, 5000);
+        }, 30000);
 
         return () => clearInterval(interval);
     }, []);

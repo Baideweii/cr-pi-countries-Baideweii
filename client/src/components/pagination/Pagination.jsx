@@ -1,4 +1,5 @@
 import React from 'react';
+import './Pagination.css'; 
 
 function Pagination({ nPages, currentPage, setCurrentPage }) {
     const pageNumbers = [...Array(nPages + 1).keys()].slice(1);
@@ -14,35 +15,39 @@ function Pagination({ nPages, currentPage, setCurrentPage }) {
     }
 
     return (
-        <nav>
-            <ul className='pagination justify-content-center'>
-                <li className="page-item">
-                    <a className="page-link" 
-                        onClick={prevPage} 
-                        href='#'>
-                        Previous
-                    </a>
-                </li>
-                {pageNumbers.map(pgNumber => (
-                    <li key={pgNumber} 
-                        className= {`page-item ${currentPage === pgNumber ? 'active' : ''} `} >
+        <div className="pagination-container"> 
+            <div className="pagination-wrapper"> 
+                <div>
+                    <ul className='pagination'>
+                        <li className="page-item">
+                            <a className="page-link prev-next" 
+                                onClick={prevPage} 
+                                href='#'>
+                                Anterior
+                            </a>
+                        </li>
+                        {pageNumbers.map(pgNumber => (
+                            <li key={pgNumber} 
+                                className={`page-item ${currentPage === pgNumber ? 'active' : ''} `} >
 
-                        <a onClick={() => setCurrentPage(pgNumber)}  
-                            className='page-link' 
-                            href='#'>
-                            {pgNumber}
-                        </a>
-                    </li>
-                ))}
-                <li className="page-item">
-                    <a className="page-link" 
-                        onClick={nextPage}
-                        href='#'>
-                        Next
-                    </a>
-                </li>
-            </ul>
-        </nav>
+                                <a onClick={() => setCurrentPage(pgNumber)}  
+                                    className='page-link' 
+                                    href='#'>
+                                    {pgNumber}
+                                </a>
+                            </li>
+                        ))}
+                        <li className="page-item">
+                            <a className="page-link prev-next" 
+                                onClick={nextPage}
+                                href='#'>
+                                Siguiente
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     )
 }
 

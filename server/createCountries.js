@@ -36,7 +36,7 @@ async function createCountries() {
             currencies: countryData.currencies ? Object.values(countryData.currencies)[0].name : null, // Extraer el nombre de la primera moneda si existe
             continent: countryData.continents[0],
             subregion: countryData.subregion,
-            maps: countryData.maps.googleMaps,
+            maps: countryData.latlng,
           });
           createdCountries++;
         } catch (error) {

@@ -1,0 +1,48 @@
+.filters-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 20px;
+}
+  
+button {
+  padding: 4px 8px;
+  border: 2px solid #000;
+  border-radius: 5px;
+  background-color: #a9a9a9;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: 'Nothing';
+  font-size: 16px; 
+}
+  
+button:hover {
+  background-color: #696969;
+}
+  
+select {
+  padding: 4px;
+  border: 2px solid #000;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  font-family: 'Nothing';
+  font-size: 16px; 
+}
+  
+select:hover {
+  background-color: #d3d3d3;
+}
+  
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill="currentColor" d="M10 12.586l-4.293-4.293-1.414 1.414L10 15.414l5.707-5.707-1.414-1.414L10 12.586z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 20px;
+  padding-right: 30px;
+  cursor: pointer;
+}
+  
