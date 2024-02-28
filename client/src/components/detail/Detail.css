@@ -220,3 +220,11 @@
     color: black;
     margin: 0 40px; 
 }
+
+.home_button_detail {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 20px;
+    z-index: 1;
+}

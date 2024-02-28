@@ -81,26 +81,26 @@ function LoadingPage({ updateCountries, setBackground }) {
           },
     ]
 
-    // const postActivities = async () => {
-    //     try {
-    //         for (const activity of activities) {
-    //             await axios.post(URL_ACTIVITIES, activity);
-    //         }
-    //         setTimeout(() => {
-    //             navigate('/home');
-    //         }, 2000); 
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // };
+    const postActivities = async () => {
+        try {
+            for (const activity of activities) {
+                await axios.post(URL_ACTIVITIES, activity);
+            }
+            setTimeout(() => {
+                navigate('/home');
+            }, 2000); 
+        } catch (error) {
+            console.error(error);
+        }
+    };
     
     const getCountries = async () => {
         try {
             const { data } = await axios.get(URL_COUNTRIES);
             updateCountries(data);
             setBackground(); 
-            // postActivities();
-            navigate('/home');
+            postActivities();
+            // navigate('/home');
         } catch (error) {
             console.error(error);
         }

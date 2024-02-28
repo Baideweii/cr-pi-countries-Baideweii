@@ -30,7 +30,6 @@ function HomePage({ countries }) {
   const lastIndex = currentPage * cardsPerPage;
   const firstIndex = lastIndex - cardsPerPage;
   const nPages = Math.ceil(allCountries.length / cardsPerPage);
-    
   
   const onSearch = async (name) => {
     if (filterValue === "All") {

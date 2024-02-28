@@ -25,7 +25,7 @@ module.exports = (sequelize) => {
             allowNull: false,
         },
         type: {
-            type: DataTypes.ENUM('Recreativo', 'Religioso', 'Deportivo', 'Medicinal', 'Sexual', 'Cultural', 'Gastronomico', 'Ecologico', 'Artistico', 'Ocio'),
+            type: DataTypes.ENUM('Recreativo', 'Religioso', 'Deportivo', 'Medicinal', 'Cultural', 'Gastronomico', 'Ecologico', 'Artistico', 'Ocio'),
             allowNull: false,
         },
     }, {

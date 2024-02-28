@@ -25,3 +25,10 @@ input[type="text"]:focus {
     outline: none;
     border-color: #000;
 }
+
+.home_button_form {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 20px;
+}

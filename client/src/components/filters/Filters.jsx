@@ -70,7 +70,6 @@ function Filters({ dispatch, handleFilterChange, getActivityType, filterValue, o
         <option value="Ocio">Ocio</option>
         <option value="Recreativo">Recreativo</option>
         <option value="Religioso">Religioso</option>
-        <option value="Sexual">Sexual</option>
       </select>
     </div>
   );

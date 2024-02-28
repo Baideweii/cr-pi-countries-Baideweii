@@ -14,14 +14,14 @@ async function getActivityByType(req, res) {
       return res.status(304).json({ message: "No se ha encontrado ninguna actividad con ese tipo." });
     }
 
-    const activityIds = activities.map(activity => activity.id);
+    const activitiesIds = activities.map(activity => activity.id);
 
     const countries = await Country.findAll({
       include: [
         {
           model: Activity,
           where: {
-            id: activityIds
+            id: activitiesIds
           },
         }
       ]

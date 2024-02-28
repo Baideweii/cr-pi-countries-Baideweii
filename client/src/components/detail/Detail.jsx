@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import URLS from '../../helpers/urlHelper';
 import './Detail.css'
 import detailTittleImage from '../../images/detail-tittle.png'
 import activityTittleImage from '../../images/detail-activity-tittle.png'
 import activityImage from '../../images/detail-activity.png'
-import detailBackground from '../../images/detail.png'
 
 function Detail() {
     const { id } = useParams();
@@ -44,6 +43,9 @@ function Detail() {
 
     return (
         <div>
+            <Link to='/home'> 
+                <button className='home_button_detail'>Home</button>
+            </Link>
             <div className='detail-container'>
                 <img className='detail-flag' src={country.image} alt={country.name} />
     

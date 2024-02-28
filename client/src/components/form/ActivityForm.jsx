@@ -4,6 +4,7 @@ import axios from 'axios';
 import { validateName, validateDifficulty, validateDuration, validateSeason, validateType } from '../../validations/validation';
 import URLS from '../../helpers/urlHelper';
 import './ActivityForm.css'
+import { Link } from 'react-router-dom';
 
 const ActivityForm = ({ allCountries }) => {
 
@@ -126,6 +127,10 @@ const ActivityForm = ({ allCountries }) => {
   };
 
   return (
+    <div>
+      <Link to='/home'>
+        <button className='home_button_form'>Home</button>
+      </Link>
     <form onSubmit={handleSubmit} className='activity-form'>
       <label>
         Nombre:
@@ -189,7 +194,6 @@ const ActivityForm = ({ allCountries }) => {
           <option value="Ocio">Ocio</option>
           <option value="Recreativo">Recreativo</option>
           <option value="Religioso">Religioso</option>
-          <option value="Sexual">Sexual</option>
         </select>
         <div className="error">{errors.season}</div>
       </label>
@@ -220,6 +224,7 @@ const ActivityForm = ({ allCountries }) => {
       <br />
       <button type="submit" disabled={!formValid}>Crear Actividad Turística</button>
     </form>
+    </div>
   );
 };
 
