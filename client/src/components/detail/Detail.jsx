@@ -44,7 +44,7 @@ function Detail() {
 
     return (
         <div>
-            <div className='detail-container' style={{ backgroundImage: `url(${detailBackground})` }}>
+            <div className='detail-container'>
                 <img className='detail-flag' src={country.image} alt={country.name} />
     
                 {country.id && <p className="country-id">Abreviatura: <br></br>{country.id}</p>}
