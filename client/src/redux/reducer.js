@@ -1,4 +1,4 @@
-import { UPLOAD, FILTER, ORDER, TYPES } from './actions';
+import { UPLOAD, FILTER, ORDER, TYPES, AREA } from './actions';
 
 const initialState = {
   countries: [],
@@ -7,6 +7,7 @@ const initialState = {
   filter: 'All',
   order: 'None',
   type: 'None',
+  area: 'None',
 };
 
 function reducer(state = initialState, { type, payload }) {
@@ -22,27 +23,33 @@ function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         filter: payload,
-        countries: getFilteredAndOrderedCountries(state.countries, state.allCountries, payload, state.order, state.type, state.countriesByActivities),
+        countries: getFilteredAndOrderedCountries(state.countries, state.allCountries, payload, state.order, state.type, state.countriesByActivities, state.area),
       };
     case ORDER:
       return {
         ...state,
         order: payload,
-        countries: getFilteredAndOrderedCountries(state.countries, state.allCountries, state.filter, payload, state.type, state.countriesByActivities),
+        countries: getFilteredAndOrderedCountries(state.countries, state.allCountries, state.filter, payload, state.type, state.countriesByActivities, state.area),
       };
     case TYPES:
       return {
         ...state,
         type: payload.type,
         countriesByActivities: payload.countriesByType,
-        countries: getFilteredAndOrderedCountries(payload.countriesByType, state.allCountries, state.filter, state.order, payload.type, payload.countriesByType)
+        countries: getFilteredAndOrderedCountries(payload.countriesByType, state.allCountries, state.filter, state.order, payload.type, payload.countriesByType, state.area)
+      }
+    case AREA:
+      return {
+        ...state,
+        area: payload,
+        countries: getFilteredAndOrderedCountries(state.countries, state.allCountries, state.filter, state.order, state.type, state.countriesByActivities, payload)
       }
     default:
       return state;
   }
 }
 
-function getFilteredAndOrderedCountries(countries, allCountries, filter, order, type, countriesActivities) {
+function getFilteredAndOrderedCountries(countries, allCountries, filter, order, type, countriesActivities, area) {
   let filteredCountries = []
 
   if(type === 'None') {
@@ -66,6 +73,14 @@ function getFilteredAndOrderedCountries(countries, allCountries, filter, order, 
   } else if (order === 'A') {
     filteredCountries.sort((a, b) => a.name.localeCompare(b.name));
   }
+
+  if(area === 'ME') {
+    filteredCountries = filteredCountries.filter(country => country.area < 900000)
+  } else if (area === 'MA') {
+    filteredCountries = filteredCountries.filter(country => country.area > 900000)
+  }
+
+  
 
   return filteredCountries;
 }

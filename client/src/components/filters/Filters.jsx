@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { filterCountries, orderCountries } from '../../redux/actions';
+import { filterByArea, filterCountries, orderCountries } from '../../redux/actions';
 import './Filters.css';
 
-function Filters({ dispatch, handleFilterChange, getActivityType, filterValue, orderValue, typeValue }) {
+function Filters({ dispatch, handleFilterChange, getActivityType, filterValue, orderValue, typeValue, areaValue }) {
   const [continentSelector, setContinentSelector] = useState(filterValue);
   const [orderSelector, setOrderSelector] = useState(orderValue);
   const [typeSelector, setTypeSelector] = useState(typeValue);
+  const [areaSelector, setAreaSelector] = useState(areaValue);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,15 +25,21 @@ function Filters({ dispatch, handleFilterChange, getActivityType, filterValue, o
       setTypeSelector(value)
       getActivityType(value)
     }
+    if (name === 'areaSelector') {
+      setAreaSelector(value)
+      dispatch(filterByArea(value));
+    }
   };
 
   const handleCleanse = () => {
     setContinentSelector('All');
     setOrderSelector('None'); 
     setTypeSelector('None');
+    setAreaSelector('None')
 
     dispatch(filterCountries('All'));
     dispatch(orderCountries('None'));
+    dispatch(filterByArea('None'))
     getActivityType('None')
   };
 
@@ -71,6 +78,12 @@ function Filters({ dispatch, handleFilterChange, getActivityType, filterValue, o
         <option value="Recreativo">Recreativo</option>
         <option value="Religioso">Religioso</option>
       </select>
+      <select name="areaSelector" onChange={handleChange} value={areaSelector}>
+        <option value='None' hidden>Orden</option>
+        <option value='None' >Ninguno</option>
+        <option value='MA'>Mayor a 900.000</option>
+        <option value='ME'>Menor a 9000.000</option>
+      </select>
     </div>
   );
 }
@@ -79,6 +92,7 @@ const mapStateToProps = (state) => ({
   filterValue: state.filter,
   orderValue: state.order,
   typeValue: state.type,
+  areaValue: state.area
 });
 
 export default connect(mapStateToProps)(Filters);

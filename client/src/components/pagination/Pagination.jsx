@@ -19,13 +19,13 @@ function Pagination({ nPages, currentPage, setCurrentPage }) {
             <div className="pagination-wrapper"> 
                 <div>
                     <ul className='pagination'>
-                        <li className="page-item">
+                        {currentPage !== 1 && <li className="page-item">
                             <a className="page-link prev-next" 
                                 onClick={prevPage} 
                                 href='#'>
                                 Anterior
                             </a>
-                        </li>
+                        </li>}
                         {pageNumbers.map(pgNumber => (
                             <li key={pgNumber} 
                                 className={`page-item ${currentPage === pgNumber ? 'active' : ''} `} >
@@ -37,13 +37,13 @@ function Pagination({ nPages, currentPage, setCurrentPage }) {
                                 </a>
                             </li>
                         ))}
-                        <li className="page-item">
+                        {currentPage !== nPages && <li className="page-item">
                             <a className="page-link prev-next" 
                                 onClick={nextPage}
                                 href='#'>
                                 Siguiente
                             </a>
-                        </li>
+                        </li>}
                     </ul>
                 </div>
             </div>
