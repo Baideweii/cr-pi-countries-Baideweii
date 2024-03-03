@@ -216,7 +216,7 @@ const ActivityForm = ({ allCountries }) => {
           {formData.countries.map((country, index) => (
             <div key={index}>
               {country}
-              <button type="button" onClick={() => handleRemoveCountry(country)}>X</button>
+              <button type="button" onClick={() => handleRemoveCountry(country)}>XXX</button>
             </div>
           ))}
         </div>
