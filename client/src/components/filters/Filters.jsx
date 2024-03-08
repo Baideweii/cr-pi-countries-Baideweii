@@ -82,7 +82,7 @@ function Filters({ dispatch, handleFilterChange, getActivityType, filterValue, o
         <option value='None' hidden>Orden</option>
         <option value='None' >Ninguno</option>
         <option value='MA'>Mayor a 900.000</option>
-        <option value='ME'>Menor a 9000.000</option>
+        <option value='ME'>Menor a 900.000</option>
       </select>
     </div>
   );
