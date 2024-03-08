@@ -53,7 +53,7 @@ export default function Background() {
 
         const interval = setInterval(() => {
             setCurrentBackgroundIndex(prevIndex => (prevIndex + 1) % backgrounds.length);
-        }, 30000);
+        }, 5000);
 
         return () => clearInterval(interval);
     }, []);
