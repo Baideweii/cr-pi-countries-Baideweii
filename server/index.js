@@ -4,7 +4,7 @@ require("dotenv").config();
 const { PORT } = process.env
 const createCountries = require("./createCountries.js"); 
 
-conn.sync({ force: true }).then(async () => {
+conn.sync({ force: false }).then(async () => {
   await createCountries();
   server.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
